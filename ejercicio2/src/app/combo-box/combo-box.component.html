@@ -1,0 +1,17 @@
+<div class="header">
+    <h1>Gasolina</h1>
+    <p>Ingrese la cantidad de galones</p>
+    </div>
+    <label>Cantidad (en galones):</label>
+    <input type="number" step = "0.05" [(ngModel)]="valor" (change)="capturar()">
+    <label>Tipo de combustible:</label>
+    <select [(ngModel)]="opcionSeleccionado" (change)="capturar()">
+    <option value="Selecciona">Selecciona</option>
+    <option *ngFor="let u of unidades" value="{{u}}" >
+    {{u}}
+    </option>
+    </select>
+    <label [hidden]="opcionSeleccionado == 'Selecciona' || valor<0.05 || valor>150">El precio de {{valor}} galones de combustible {{ opcionSeleccionado }} es:
+    ${{valorconversion}}</label>
+    <label [hidden]="opcionSeleccionado == 'Selecciona' || valor>=0.05">La cantidad de galones debe ser mayor a 0.05</label>
+    <label [hidden]="opcionSeleccionado == 'Selecciona' || valor<=150">La cantidad de galones debe ser menor a 150</label>
